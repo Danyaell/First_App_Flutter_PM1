@@ -11,19 +11,17 @@ class Calculadora extends StatefulWidget {
 class _CalculadoraState extends State<Calculadora> {
   double _trab = 0;
 
-  void _presionarNumero(int n) {
+  void _pressNumber(int n) {
     setState(() {
-      _trab=_trab*10+n;
-    });
-    print(_trab);
-  }
-
-  void _borrarTodo() {
-    setState(() {
-      _trab=0;
+      _trab = _trab * 10 + n;
     });
   }
 
+  void _clearEverything() {
+    setState(() {
+      _trab = 0;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,17 +39,14 @@ class _CalculadoraState extends State<Calculadora> {
                 children: <Widget>[
                   Container(
                     decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 236, 236, 236),
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        border: Border.all(
-                          color: Colors.black,
-                          width: 2
-                        )),
+                        color: const Color.fromARGB(255, 236, 236, 236),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                        border: Border.all(color: Colors.black, width: 2)),
                     height: 60,
                     width: 224,
                     child: Text(
                       "$_trab",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 40,
                       ),
                     ),
@@ -66,7 +61,9 @@ class _CalculadoraState extends State<Calculadora> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FloatingActionButton(
-                                onPressed: () {_borrarTodo();},
+                                onPressed: () {
+                                  _clearEverything();
+                                },
                                 child: const Text(
                                   "CE",
                                   style: TextStyle(fontSize: 40),
@@ -100,7 +97,7 @@ class _CalculadoraState extends State<Calculadora> {
                             children: [
                               FloatingActionButton(
                                 onPressed: () {
-                                  _presionarNumero(1);
+                                  _pressNumber(1);
                                 },
                                 child: const Text(
                                   "1",
@@ -108,14 +105,18 @@ class _CalculadoraState extends State<Calculadora> {
                                 ),
                               ),
                               FloatingActionButton(
-                                onPressed: () {_presionarNumero(2);},
+                                onPressed: () {
+                                  _pressNumber(2);
+                                },
                                 child: const Text(
                                   "2",
                                   style: TextStyle(fontSize: 40),
                                 ),
                               ),
                               FloatingActionButton(
-                                onPressed: () {_presionarNumero(3);},
+                                onPressed: () {
+                                  _pressNumber(3);
+                                },
                                 child: const Text(
                                   "3",
                                   style: TextStyle(fontSize: 40),
@@ -134,21 +135,27 @@ class _CalculadoraState extends State<Calculadora> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FloatingActionButton(
-                                onPressed: () {_presionarNumero(4);},
+                                onPressed: () {
+                                  _pressNumber(4);
+                                },
                                 child: const Text(
                                   "4",
                                   style: TextStyle(fontSize: 40),
                                 ),
                               ),
                               FloatingActionButton(
-                                onPressed: () {_presionarNumero(5);},
+                                onPressed: () {
+                                  _pressNumber(5);
+                                },
                                 child: const Text(
                                   "5",
                                   style: TextStyle(fontSize: 40),
                                 ),
                               ),
                               FloatingActionButton(
-                                onPressed: () {_presionarNumero(6);},
+                                onPressed: () {
+                                  _pressNumber(6);
+                                },
                                 child: const Text(
                                   "6",
                                   style: TextStyle(fontSize: 40),
@@ -167,21 +174,27 @@ class _CalculadoraState extends State<Calculadora> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FloatingActionButton(
-                                onPressed: () {_presionarNumero(7);},
+                                onPressed: () {
+                                  _pressNumber(7);
+                                },
                                 child: const Text(
                                   "7",
                                   style: TextStyle(fontSize: 40),
                                 ),
                               ),
                               FloatingActionButton(
-                                onPressed: () {_presionarNumero(8);},
+                                onPressed: () {
+                                  _pressNumber(8);
+                                },
                                 child: const Text(
                                   "8",
                                   style: TextStyle(fontSize: 40),
                                 ),
                               ),
                               FloatingActionButton(
-                                onPressed: () {_presionarNumero(9);},
+                                onPressed: () {
+                                  _pressNumber(9);
+                                },
                                 child: const Text(
                                   "9",
                                   style: TextStyle(fontSize: 40),
@@ -207,7 +220,9 @@ class _CalculadoraState extends State<Calculadora> {
                                 ),
                               ),
                               FloatingActionButton(
-                                onPressed: () {_presionarNumero(0);},
+                                onPressed: () {
+                                  _pressNumber(0);
+                                },
                                 child: const Text(
                                   "0",
                                   style: TextStyle(fontSize: 40),
