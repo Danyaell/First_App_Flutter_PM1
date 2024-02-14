@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sumador/views/calc.dart';
 import 'views/doritos.dart';
+import 'navi.dart';
 
 class MiPrimeraAPP extends StatelessWidget {
   const MiPrimeraAPP({super.key});
@@ -16,9 +17,7 @@ class MiPrimeraAPP extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const Calculadora(
-        titulo: "Programando Mi APP",
-      ),
+      home: const Navi(),
     );
   }
 }
