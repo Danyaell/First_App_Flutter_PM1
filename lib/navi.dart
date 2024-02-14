@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:sumador/views/calc.dart";
 import "package:sumador/views/doritos.dart";
+import "package:sumador/views/welcome.dart";
 
 class Navi extends StatefulWidget {
   const Navi({super.key});
@@ -11,11 +12,14 @@ class Navi extends StatefulWidget {
 class _NaviState extends State<Navi> {
   int _indice = 0;
   final _cuerpo = [
+    const Welcome(
+      titulo: "Bienvenido"
+    ),
     const Calculadora(
-      titulo: "Yo soy el bori de la calquiuleitor",
+      titulo: "Calculadora",
     ),
     const Doritos(
-      titulo: "Yo soy el bori del contador",
+      titulo: "Contador",
     )
   ];
 
@@ -31,6 +35,9 @@ class _NaviState extends State<Navi> {
           });
         },
         items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.home),
+        label: "Home",
+        ),
         BottomNavigationBarItem(icon: Icon(Icons.calculate),
         label: "Calculadora",
         ),

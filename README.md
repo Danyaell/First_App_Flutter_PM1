@@ -7,7 +7,3 @@
 - Add padding and rescale to the buttons in the view.
 
 #### Tasks for next class:
-- Create 'Welcum x' view page.
-- Create 'Login' view page:
-  - With a text field and submit button.
-- Add the views as items in navigation bar.

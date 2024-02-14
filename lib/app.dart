@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sumador/views/calc.dart';
-import 'views/doritos.dart';
+import 'package:sumador/views/login.dart';
 import 'navi.dart';
 
 class MiPrimeraAPP extends StatelessWidget {
   const MiPrimeraAPP({super.key});
+  static var isLoggedIn = true;
 
 // This widget is the root of your application.
   @override
@@ -17,7 +17,7 @@ class MiPrimeraAPP extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const Navi(),
+      home: isLoggedIn ? const Navi() : const Login(titulo: "Ingresa tu nombre")
     );
   }
 }
