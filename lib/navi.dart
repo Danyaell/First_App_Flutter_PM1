@@ -1,6 +1,9 @@
 import "package:flutter/material.dart";
 import "package:sumador/views/calc.dart";
 import "package:sumador/views/doritos.dart";
+import "package:sumador/views/login.dart";
+import "package:sumador/views/test.dart";
+import "package:sumador/views/geo.dart";
 import "package:sumador/views/welcome.dart";
 
 class Navi extends StatefulWidget {
@@ -20,14 +23,38 @@ class _NaviState extends State<Navi> {
     ),
     const Doritos(
       titulo: "Contador",
-    )
+    ),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _cuerpo.add(
+    Login(
+      titulo: "Login", 
+      home: _home,
+      ),
+    );
+
+    _cuerpo.add(
+    const Geo(
+      titulo: "Geo", 
+      ),
+    );
+  }
+
+  void _home (int n) {
+    setState(() {
+      _indice = n;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _cuerpo[_indice],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: _indice,
         onTap: (value) {
           setState(() {
@@ -43,6 +70,12 @@ class _NaviState extends State<Navi> {
         ),
         BottomNavigationBarItem(icon: Icon(Icons.add),
         label: "Contador",
+        ),
+        BottomNavigationBarItem(icon: Icon(Icons.login),
+        label: "Login",
+        ),
+        BottomNavigationBarItem(icon: Icon(Icons.local_activity),
+        label: "Geo",
         ),
       ]),
     );

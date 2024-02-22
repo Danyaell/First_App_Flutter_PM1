@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:shared_preferences/shared_preferences.dart";
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key, required this.titulo});
@@ -9,10 +10,23 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
-  final String _userName = "Danos";
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  String _message = "Bienvenida";
+  String _name = "";
+
+  Future<void> _getName() async {
+    final SharedPreferences prefs = await _prefs;
+    if (prefs != Null) {
+      setState(() {
+        _name = prefs.getString('name') ?? "popo";
+        _message = "Bienvenid@, $_name";
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    _getName();
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.titulo),
@@ -22,9 +36,9 @@ class _WelcomeState extends State<Welcome> {
           child: Column(
             children: [
               Text(
-                "Bienvenido, $_userName",
+                _message,
                 style: const TextStyle(
-                  fontSize: 26
+                  fontSize: 35
                 ),
               ),
             ],

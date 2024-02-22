@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
+import "package:shared_preferences/shared_preferences.dart";
 
 class Login extends StatefulWidget {
-  const Login({super.key, required this.titulo});
+  const Login({super.key, required this.titulo, required this.home});
+  final Function home;
   final String titulo;
 
   @override
@@ -9,6 +11,19 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final TextEditingController _textEditingController = TextEditingController();
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+  Future<void> _saveName() async {
+    final SharedPreferences prefs = await _prefs;
+    if (prefs != Null) {
+      prefs.setString('name', _textEditingController.text);
+      setState(() {
+        _textEditingController.text = "";
+      });
+    }
+  }
+
   String _userName = "Danos";
   late TextEditingController _controller;
 
@@ -41,15 +56,20 @@ class _LoginState extends State<Login> {
                   SizedBox(
                     width: 250,
                     child: TextField(
-                      onChanged: (String value) {
+                      onSubmitted: (value) {_saveName(); widget.home(0);},
+                      controller: _textEditingController,
+                      /* onChanged: (String value) {
                         _userName = value;
-                      },
+                      }, */
                       decoration: const InputDecoration(
                           border: OutlineInputBorder(), labelText: 'Nombre'),
                     ),
                   ),
                   FloatingActionButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _saveName();
+                      widget.home(0);
+                    },
                     child: const Text("Enviar"),
                   )
                 ],

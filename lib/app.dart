@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sumador/views/login.dart';
+import "package:shared_preferences/shared_preferences.dart";
 import 'navi.dart';
+import 'views/test.dart';
 
 class MiPrimeraAPP extends StatelessWidget {
   const MiPrimeraAPP({super.key});
@@ -17,7 +19,7 @@ class MiPrimeraAPP extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: isLoggedIn ? const Navi() : const Login(titulo: "Ingresa tu nombre")
+      home: const Navi() //SharedPreferencesDemo()
     );
   }
 }
