@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sumador/views/login.dart';
-import "package:shared_preferences/shared_preferences.dart";
 import 'navi.dart';
-import 'views/test.dart';
 
 class MiPrimeraAPP extends StatelessWidget {
   const MiPrimeraAPP({super.key});

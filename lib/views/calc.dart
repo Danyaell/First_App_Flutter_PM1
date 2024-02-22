@@ -51,7 +51,7 @@ class _CalculadoraState extends State<Calculadora> {
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     height: 280,
                     width: 224,
                     child: Column(

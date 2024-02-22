@@ -2,13 +2,13 @@ import "package:flutter/material.dart";
 import "package:sumador/views/calc.dart";
 import "package:sumador/views/doritos.dart";
 import "package:sumador/views/login.dart";
-import "package:sumador/views/test.dart";
 import "package:sumador/views/geo.dart";
 import "package:sumador/views/welcome.dart";
 
 class Navi extends StatefulWidget {
   const Navi({super.key});
 
+  @override
   State<Navi> createState() => _NaviState();
 }
 
