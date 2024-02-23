@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "533971542263",
+    "project_id": "pm-2857",
+    "storage_bucket": "pm-2857.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533971542263:android:8f045871f406d2b6e0f3f2",
+        "android_client_info": {
+          "package_name": "com.example.sumador"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpBChhnZ0_nThbkuFrmaKZzgXwya4SugM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

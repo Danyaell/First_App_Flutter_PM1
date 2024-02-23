@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:cloud_firestore/cloud_firestore.dart";
 
 class Doritos extends StatefulWidget {
   const Doritos({super.key, required this.titulo});
@@ -9,18 +10,38 @@ class Doritos extends StatefulWidget {
 }
 
 class _DoritosState extends State<Doritos> {
+  final db = FirebaseFirestore.instance;
   int _counter = -5;
+
+  @override
+  void initState() {
+    _readData();
+  }
+
+  void _writeData() async {
+    await db.collection("numeros").doc("n0").set({"contador" : _counter});
+  }
+
+  void _readData () async {
+    await db.collection("numeros").doc("n0").get().then((documento) {
+      setState(() {
+        _counter = documento.get("contador");
+      });
+    });
+  }
 
   void _incrementCounter() {
     setState(() {
       _counter++;
     });
+    _writeData();
   }
 
   void _decrementCounter() {
     setState(() {
       _counter--;
     });
+    _writeData();
   }
 
   @override
