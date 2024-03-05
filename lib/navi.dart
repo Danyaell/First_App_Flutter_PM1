@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
+import "package:sumador/views/addData.dart";
 import "package:sumador/views/calc.dart";
+import "package:sumador/views/calendar.dart";
 import "package:sumador/views/doritos.dart";
 import "package:sumador/views/login.dart";
 import "package:sumador/views/geo.dart";
@@ -41,6 +43,18 @@ class _NaviState extends State<Navi> {
       titulo: "Geo", 
       ),
     );
+
+    _cuerpo.add(
+    const Calendar(
+      titulo: "Calendario", 
+      ),
+    );
+
+    _cuerpo.add(
+    const AddData(
+      titulo: "Agregar Evento", 
+      ),
+    );
   }
 
   void _home (int n) {
@@ -74,8 +88,14 @@ class _NaviState extends State<Navi> {
         BottomNavigationBarItem(icon: Icon(Icons.login),
         label: "Login",
         ),
-        BottomNavigationBarItem(icon: Icon(Icons.local_activity),
+        BottomNavigationBarItem(icon: Icon(Icons.location_city),
         label: "Geo",
+        ),
+        BottomNavigationBarItem(icon: Icon(Icons.calendar_month),
+        label: "Calendario",
+        ),
+        BottomNavigationBarItem(icon: Icon(Icons.add),
+        label: "Agregar Evento",
         ),
       ]),
     );

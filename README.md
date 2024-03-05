@@ -8,6 +8,3 @@
 
 #### Tasks for next class:
 
-- Add Firebase to Flutter.
-- Check Firebase on cmd.
-- Use npm.
