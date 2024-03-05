@@ -52,7 +52,7 @@ class _NaviState extends State<Navi> {
 
     _cuerpo.add(
     const AddData(
-      titulo: "Agregar Evento", 
+      title: "Agregar Evento", 
       ),
     );
   }

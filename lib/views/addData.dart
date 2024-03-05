@@ -2,50 +2,51 @@ import "package:cloud_firestore/cloud_firestore.dart";
 import "package:flutter/material.dart";
 
 class AddData extends StatefulWidget {
-  const AddData({super.key, required this.titulo});
-  final String titulo;
+  const AddData({super.key, required this.title});
+  final String title;
 
   @override
   State<AddData> createState() => _AddDataState();
 }
 
 class _AddDataState extends State<AddData> {
-  final TextEditingController _nombreTEC = TextEditingController();
-  final TextEditingController _inicioTEC = TextEditingController();
-  final TextEditingController _finTEC = TextEditingController();
-  final TextEditingController _colorTEC = TextEditingController();
+  final TextEditingController _nameInput = TextEditingController();
+  final TextEditingController _startDateInput = TextEditingController();
+  final TextEditingController _endDateInput = TextEditingController();
+  final TextEditingController _colorInput = TextEditingController();
   final db = FirebaseFirestore.instance;
+
   @override
   void initState(){
     super.initState();
   }
 
   Future<void> _sendData() async {
-    String nombre = _nombreTEC.text;
-    Timestamp inicio = Timestamp.fromDate(DateTime.parse(_inicioTEC.text));
-    Timestamp fin = Timestamp.fromDate(DateTime.parse(_finTEC.text));
-    int color = int.parse(_colorTEC.text);
+    String name = _nameInput.text;
+    Timestamp startDate = Timestamp.fromDate(DateTime.parse(_startDateInput.text));
+    Timestamp endDate = Timestamp.fromDate(DateTime.parse(_endDateInput.text));
+    int color = int.parse(_colorInput.text);
+    //2024-03-05 10:00:00.000
+    //print(Color(0xFFA30186));
 
     Map<String, dynamic> datos = {
-      "Nombre":nombre,
-      "Inicio":inicio,
-      "Fin":fin,
+      "Nombre":name,
+      "Inicio":startDate,
+      "Fin":endDate,
       "Color":color
     };
 
-    print(datos)
-
-    //await db.collection("calendario").add(datos);
+    await db.collection("calendar").add(datos);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(widget.titulo),
+          title: Text(widget.title),
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         ),
-        body: const Center(
+        body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center, 
             children: [
@@ -55,8 +56,8 @@ class _AddDataState extends State<AddData> {
                 SizedBox(
                   width: 250,
                   child: TextField(
-                    controller: _nombreTEC,
-                    decoration: InputDecoration(
+                    controller: _nameInput,
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(), labelText: 'Nombre'),
                   ),
                 ),
@@ -68,8 +69,8 @@ class _AddDataState extends State<AddData> {
                 SizedBox(
                   width: 250,
                   child: TextField(
-                    controller: _inicioTEC,
-                    decoration: InputDecoration(
+                    controller: _startDateInput,
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(), labelText: 'Inicio'),
                   ),
                 ),
@@ -81,8 +82,8 @@ class _AddDataState extends State<AddData> {
                 SizedBox(
                   width: 250,
                   child: TextField(
-                    controller: _finTEC,
-                    decoration: InputDecoration(
+                    controller: _endDateInput,
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(), labelText: 'Fin'),
                   ),
                 ),
@@ -94,11 +95,22 @@ class _AddDataState extends State<AddData> {
                 SizedBox(
                   width: 250,
                   child: TextField(
-                    controller: _colorTEC,
-                    decoration: InputDecoration(
+                    controller: _colorInput,
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(), labelText: 'Color'),
                   ),
                 ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FloatingActionButton(
+                    onPressed: () {
+                      _sendData();
+                    },
+                    child: const Text("Enviar"),
+                  ),
               ],
             )
           ]),
