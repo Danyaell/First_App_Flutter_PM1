@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:sumador/views/addData.dart";
+import "package:sumador/views/album.dart";
 import "package:sumador/views/calc.dart";
 import "package:sumador/views/calendar.dart";
 import "package:sumador/views/doritos.dart";
@@ -55,6 +56,12 @@ class _NaviState extends State<Navi> {
       title: "Agregar Evento", 
       ),
     );
+
+    _cuerpo.add(
+    const Album(
+      title: "Álbum de Imágenes", 
+      ),
+    );
   }
 
   void _home (int n) {
@@ -96,6 +103,9 @@ class _NaviState extends State<Navi> {
         ),
         BottomNavigationBarItem(icon: Icon(Icons.add),
         label: "Agregar Evento",
+        ),
+        BottomNavigationBarItem(icon: Icon(Icons.image),
+        label: "Álbum de Imágenes",
         ),
       ]),
     );

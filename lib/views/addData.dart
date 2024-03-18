@@ -27,7 +27,7 @@ class _AddDataState extends State<AddData> {
     Timestamp endDate = Timestamp.fromDate(DateTime.parse(_endDateInput.text));
     int color = int.parse(_colorInput.text);
     //2024-03-05 10:00:00.000
-    //print(Color(0xFFA30186));
+    //print(Color(0xFF0BA874));
 
     Map<String, dynamic> datos = {
       "Nombre":name,
